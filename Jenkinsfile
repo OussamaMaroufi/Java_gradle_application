@@ -50,7 +50,7 @@ pipeline{
                 script{
                     dir('kubernetes/myapp'){
                         withEnv(['DATREE_TOKEN=6cb6b8ac-e0e3-4bb1-a11b-5f0ff7b5def3']) {
-                            sh "datree test .*yaml"
+                            
                         }
                        
                     }
