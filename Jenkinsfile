@@ -63,7 +63,7 @@ pipeline{
                     script{
 
                         withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_pass')]) {
-                            dir("'kubernetes/myapp'"){
+                            dir("kubernetes/"){
                                 sh '''
                                 helmversion=${helm show chart myapp | grep version |cut -d: -f 2 | tr -d ''}
                                 tar -czf myapp-${helmversion}.tgz myapp/
