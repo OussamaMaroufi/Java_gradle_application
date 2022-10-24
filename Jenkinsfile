@@ -64,10 +64,10 @@ pipeline{
 
                         withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_pass')]) {
                             dir("kubernetes/"){
-                                sh '''
-                                helmversion=${helm show chart myapp | grep version |cut -d: -f 2 | tr -d ''}
-                                tar -czf myapp-${helmversion}.tgz myapp/
-                                curl -u admin:$docker_pass http://174.129.132.61:8081/repository/helm-hosted/ --upload-file myapp-${helmversion}.tgz -v
+                                    sh '''
+                                    helmversion=${helm show chart myapp | grep version |cut -d: -f 2 | tr -d ' '}
+                                    tar -czf myapp-${helmversion}.tgz myapp/
+                                    curl -u admin:$docker_pass http://174.129.132.61:8081/repository/helm-hosted/ --upload-file myapp-${helmversion}.tgz -v
                                 '''
                             }
                         }
